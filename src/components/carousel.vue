@@ -37,6 +37,9 @@ computed: {
 </script>
 
 <style>
+#carousel-con{
+  border: solid;
+}
 #click {
     width: 5%;
 }

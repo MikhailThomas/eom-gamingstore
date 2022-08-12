@@ -55,25 +55,12 @@
    </div>
 </div>
   </nav>
-  <div id="nav2" class="sticky-top">
-    <div v-for="filters in filter" :key="filters" class="btn-group">
-  <button id="filter" class="btn" type="button">
-    {{ filters.name }}
-  </button>
-  </div>
-  </div>
   </div>
   </div>
 </template>
 
 <script>
-export default {
-  computed: {
-    filter() {
-      return this.$store.state.filter
-    }
-  }
-}
+
 </script>
 
 <style scoped>
@@ -91,9 +78,7 @@ li{
 .nav-link{
   color: white;
 }
-#nav2{
-    background-color: gray;
-}
+
 #logo{
   margin: auto;
   max-height: 50px;

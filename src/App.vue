@@ -8,12 +8,14 @@
 import navbar from './components/navbar.vue'
 import bag from './components/bag.vue'
 import footerCom from './components/footerCom.vue'
+import filter from './components/filterCom.vue'
 export default {
   name: 'App',
   components: {
     navbar,
     bag,
-    footerCom
+    footerCom,
+    filter
   }
 }
 </script>
