@@ -3,35 +3,59 @@
   <div class="login-box my-5">
     <img id="logo" src="https://i.postimg.cc/hvGRnvDP/logo.jpg" alt="logo">
     <h2>Login</h2>
-    <form>
+    <!--  -->
+    <form @submit.prevent="login" method="POST">
       <div class="user-box">
-        <input type="text" name="" required="" />
+        <input type="email" name=""  v-model="email" required />
         <label>Email</label>
       </div>
       <div class="user-box">
-        <input type="password" name="" required="" />
+        <input type="password" name="" v-model="password" required />
         <label>Password</label>
       </div>
-      <a href="#">
+      <button  type="submit" >
         <span></span>
         <span></span>
         <span></span>
         <span></span>
-        Submit
-      </a>
+        Login
+      </button>
     </form>
+    <div v-if="users">
+    <h2>{{users[0].fullName}} Login Successful</h2></div>
   </div>
   </div>
 </template>
 
 <script>
-export default {};
+export default {
+  data(){
+    return{
+      email:"",
+      password:"",
+    }
+  },
+    computed: {
+     users() {
+       return this.$store.state.users;
+     },
+    },
+  methods:{
+    login() {
+       this.$store.dispatch("login", {
+        email: this.email,
+        password: this.password,
+      });
+      // console.log("Hey hey")
+  }
+  },
+}
 </script>
 
 <style scoped>
 .login-box {
   margin: auto;
-  width: 400px;
+  max-width: 400px;
   padding: 40px;
   background: rgba(0, 0, 0, 0.5);
   box-sizing: border-box;

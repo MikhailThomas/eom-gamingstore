@@ -2,7 +2,7 @@
   <div class='side back-card'>
       <div class="login-box">
       <form>
-      <a href="#">
+      <a href="./bag.vue">
         <span></span>
         <span></span>
         <span></span>

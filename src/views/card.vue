@@ -1,0 +1,143 @@
+<template>
+  <div class="container">
+    <div class="card-checkout">
+        <div class="card-logo"></div>
+        <div class="card-options">
+            <form class="card-details">
+                <input class="cc-name" placeholder="Card Holder" required>
+                <input class="cc-number" placeholder="Card Number" data-numeric required>
+                <input class="cc-expiry inline" placeholder="Expiry Date" required><input class="cc-cvc" placeholder="CVC" data-numeric required>
+                <button class="button button-scan">Scan Card</button>
+            </form>
+        </div>
+        <div class="card-confirm">
+            <button class="button button-confirm">Complete Order</button>
+        </div>
+    </div>
+</div>
+</template>
+
+<script>
+export default {
+
+}
+</script>
+
+<style scoped>
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,500,700);
+
+
+.card-checkout {
+    position: absolute;
+    width: 30%;
+    min-width: 350px;
+    height: 70%;
+    min-height: 500px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.4);
+}
+
+.card-logo {
+    width: 100%;
+    height: 35%;
+    background: url('http://digest.dx3canada.com/wp-content/uploads/2013/01/Visa-Logo.jpg');
+    background-size: 100px 45px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: #fff;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.card-options {
+    width: 100%;
+    height: 55%;
+    padding: 10px;
+    background-color: #3F8EDD;
+}
+
+.card-details {
+    width: 100%;
+    height: 100%;
+}
+
+.card-details input {
+    width: 100%;
+    height: 15%;
+    padding: 10px 20px;
+    margin-bottom: 1px;
+    color: #fff;
+    background-color: #4EA0F4;
+    border: 0;
+    font-family: Roboto;
+    font-weight: 500;
+    text-transform: uppercase;
+}
+
+.card-details input.inline {
+    margin-right: 1px;
+}
+
+.card-details input.cc-expiry {
+    width: 69.7%;
+}
+
+.card-details input.cc-cvc {
+    width: 30%;
+}
+
+.card-details input::-webkit-input-placeholder {
+    color: #C5DFFF;
+}
+
+.card-details input::-moz-placeholder {
+    color: #C5DFFF;
+}
+
+.card-details input:-moz-placeholder {
+    color: #C5DFFF;
+}
+
+.card-details input:-ms-input-placeholder {
+    color: #C5DFFF;
+}
+
+.card-details input:placeholder-shown {
+    color: #C5DFFF;
+}
+
+.card-confirm {
+    position: relative;
+    width: 100%;
+    height: 10%;
+}
+
+.button {
+    width: 100%;
+    color: #fff;
+    font-family: Roboto;
+    font-weight: 500;
+    text-transform: uppercase;
+    border: 0;
+}
+
+.button-confirm {
+    height: 100%;
+    background-color: #2EE940;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    cursor: pointer;
+}
+
+.button-confirm:focus {
+    outline: 0;
+}
+
+.button-scan {
+    height: 15%;
+    background-color: #62AEFA;
+    cursor: pointer;
+}
+</style>

@@ -10,11 +10,11 @@
         <label>Fullname</label>
       </div>
       <div class="user-box">
-        <input type="text" name="" required v-model="email" />
+        <input type="email" name="" required v-model="email" />
         <label>Email</label>
       </div>
       <div class="user-box">
-        <input type="text" name="" required v-model="phoneNumber" />
+        <input type="number" name="" required v-model="phoneNumber"/>
         <label>Cell Number</label>
       </div>
       <!-- <div class="user-box">
@@ -75,7 +75,7 @@ export default {
 
 .login-box {
   margin: auto;
-  width: 400px;
+  max-width: 400px;
   padding: 40px;
   background: rgba(0, 0, 0, 0.5);
   box-sizing: border-box;

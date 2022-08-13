@@ -2,13 +2,15 @@
 <router-link to="/productPage">
   <div id="page" class="container">
   <div class="new-card row" v-if="products">
-  <div class="card col-sm-3 mx-5 my-3"  v-for="product in products" :key="product">
+  <div class="card col-sm-3 my-3"  v-for="product in products" :key="product">
     <div class='side front-card'>
+      <router-link :to="{name: 'productPage', params: {id: product.productid} }">
       <div class="image mt-3"><img :src="product.img" alt=""></div>
       <div class="info">
         <h2>R{{ product.price }}.00</h2>
       <h3>{{ product.title }}</h3>
       </div>
+      </router-link>
     </div>
   <bag/>
   </div>
@@ -58,7 +60,7 @@ cards.forEach(card => card.addEventListener('click', transition));
   border-radius: 10px;
   transition: 0.44s;
   text-align: center;
-  margin: 0%;
+  margin: auto;
   padding: 0%;
 }
 
@@ -81,7 +83,6 @@ img:hover{
 
 div.image {
   background-color: #dadce2;
-  background-image: linear-gradient(140deg, white, #dadce2);
   background-position: center;
   background-size: cover;
   overflow-x: hidden;
