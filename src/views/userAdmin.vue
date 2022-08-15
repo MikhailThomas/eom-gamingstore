@@ -2,8 +2,7 @@
 <div class="content-profile-page">
    <div class="profile-user-page card">
       <div class="img-user-profile">
-        <img class="profile-bgHome" src="" />
-        <p></p>
+        <img class="profile-bgHome" src="https://i.postimg.cc/Vv4GDSyb/card.png" />
            </div>
           <div class="user-profile-data">
               <h1>mikhail{{ name/surname }}</h1>
@@ -20,7 +19,7 @@
        </ul>
       </div>
     </div>
-  <table class="table table-bordered">
+  <table class="table table-bordered container">
     <thead>
       <tr>
       <th><button>add product</button></th>
@@ -65,37 +64,28 @@ export default {
 </script>
 
 <style scoped>
-td{
-    border: 0.5px solid;
-    border-bottom: lightblue solid;
-}
-img{
-    max-height: 150px;
+#userImage{
+  max-width: 100%;
+  max-height: 100%;
 }
 .content-profile-page {
-  margin: 1em auto;
-  width: 44.23em;
+  margin: auto;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  max-width: 50rem;
 }
 
 .card {
-  background: #fff;
+  background: rgb(0, 0, 0);
   border-radius: 0.3rem;
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
   border: .1em solid rgba(0, 0, 0, 0.2);
-  margin-bottom: 1em; 
-}
-
-.profile-user-page .img-user-profile {
-	margin: 0 auto;
-  text-align: center; 
 }
 .profile-user-page .img-user-profile .profile-bgHome {
-	border-bottom: .2em solid #f5f5f5;
-  width: 44.23em;
   height: 16em;
   }
 .profile-user-page .img-user-profile .avatar {
-	margin: 0 auto;
+	margin: auto;
   background: #fff;
   width: 7em;
   height: 7em;
@@ -114,12 +104,11 @@ img{
 }
 .profile-user-page .user-profile-data, .profile-user-page .description-profile {
   text-align: center;
-  padding: 0 1.5em; 
 }
 .profile-user-page .user-profile-data h1 {
-  margin-top: 0.35em;
-  color: #292f33;
-  margin-bottom: 0; 
+  margin-top: 5px;
+  margin-bottom: 10px; 
+  color: #ffffff;
 }
 .profile-user-page .data-user {
   margin-bottom: 0;
@@ -127,7 +116,7 @@ img{
   padding: 0;
   list-style: none;
   display: table;
-  width: 100.15%; 
+  width: 100%; 
 }
 .profile-user-page .data-user li {
   margin: 0;
@@ -141,10 +130,9 @@ img{
   display: block; 
 }
 .profile-user-page .data-user li a {
-  background-color: #f7f7f7;
-  border-top: 1px solid rgba(242,242,242,0.5);
+  background-color: #000000;
+  color: white;
   border-bottom: .2em solid #f7f7f7;
-  box-shadow: inset 0 1px 0 rgba(255,255,255,0.4),0 1px 1px rgba(255,255,255,0.4);
   padding: .93em 0;
 }
 .profile-user-page .data-user li a strong, .profile-user-page .data-user li a span {
@@ -158,5 +146,17 @@ img{
   background: rgba(0, 0, 0, 0.05);
   border-bottom: .2em solid #3498db;
   color: #3498db; 
+}
+
+td{
+    border: 0.5px solid;
+    border-bottom: lightblue solid;
+}
+img{
+    max-height: 150px;
+}
+
+.table{
+  background-color: white;
 }
 </style>

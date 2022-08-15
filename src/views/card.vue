@@ -70,39 +70,41 @@ export default {
 </script>
 
 <style scoped>
-#page{
-    height: 100vh;
-}
+
 #logo{
     max-width: 100%;
     max-height: 100%;
 }
 .card-checkout {
     margin: auto;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
     width: 30%;
     min-width: 300px;
     height: 70%;
+    border-top-left-radius: 10%;
+    border-top-right-radius: 10%;
     min-height: 400px;
     box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.4);
 }
 
 .card-logo {
     width: 100%;
-    height: 35%;
+    height:35%;
     background: url('http://digest.dx3canada.com/wp-content/uploads/2013/01/Visa-Logo.jpg');
     background-size: 100px 45px;
     background-repeat: no-repeat;
     background-position: center;
-    background-color: #fff;
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
+    background-color: rgb(0, 0, 0);
+    border-top-left-radius: 10%;
+    border-top-right-radius: 10%;
 }
 
 .card-options {
     width: 100%;
     height: 55%;
     padding: 10px;
-    background-color: #3F8EDD;
+    background-color: rgba(0, 0, 0, 0.555);
 }
 
 .card-details {
@@ -112,13 +114,10 @@ export default {
 
 .card-details input {
     width: 100%;
-    height: 15%;
     padding: 10px 20px;
-    margin-bottom: 1px;
-    color: #fff;
-    background-color: #4EA0F4;
+    color: rgb(0, 0, 0);
+    background-color: #ffffff;
     border: 0;
-    font-family: Roboto;
     font-weight: 500;
     text-transform: uppercase;
 }
@@ -127,38 +126,30 @@ export default {
     margin-right: 1px;
 }
 
-.card-details input.cc-expiry {
-    width: 69.7%;
-}
-
-.card-details input.cc-cvc {
-    width: 30%;
-}
-
 .card-details input::-webkit-input-placeholder {
-    color: #C5DFFF;
+    color: #000000;
 }
 
 .card-details input::-moz-placeholder {
-    color: #C5DFFF;
+    color: #000000;
 }
 
 .card-details input:-moz-placeholder {
-    color: #C5DFFF;
+    color: #000000;
 }
 
 .card-details input:-ms-input-placeholder {
-    color: #C5DFFF;
+    color: #000000;
 }
 
 .card-details input:placeholder-shown {
-    color: #C5DFFF;
+    color: #000000;
 }
 
 .card-confirm {
     position: relative;
     width: 100%;
-    height: 10%;
+    height: 50px;
 }
 
 .button {
@@ -172,7 +163,7 @@ export default {
 
 .button-confirm {
     height: 100%;
-    background-color: #2EE940;
+    background-color: #03e9f4;
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
     cursor: pointer;

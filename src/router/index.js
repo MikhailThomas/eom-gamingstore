@@ -27,6 +27,11 @@ const routes = [
     name: 'card',
     component: () => import( '../views/card.vue')
   },
+  // {
+  //   path: '/bag',
+  //   name: '/bag',
+  //   component: () => import('../views/bag.vue')
+  // },
   {
     path: '/userAdmin',
     name: 'userAdmin',

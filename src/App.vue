@@ -45,6 +45,7 @@ export default {
   background-color: rgb(48, 46, 46);
 }
 #cloud-intro{
+  min-height: 100vh;
   height: 100%;
   background: url(https://static.radulescu.me/examples/clouds/clouds1000.png);
   background: url(https://static.radulescu.me/examples/clouds/clouds1000.png) 0 200px,
