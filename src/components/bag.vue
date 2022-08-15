@@ -1,5 +1,5 @@
 <template>
-  <div v-if=user cclass='side back-card'>
+  <div  class='side back-card'>
       <div class="login-box">
       <form>
       <a href="./bag.vue">

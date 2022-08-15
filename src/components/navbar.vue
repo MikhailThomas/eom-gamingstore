@@ -1,81 +1,8 @@
 <template>
-  <!-- <div id="page">
-    <div id="nav1">
-      <nav class="navbar navbar-expand-md">
-        <div class="container-fluid">
-          <button
-            id="button"
-            class="navbar-toggler btn"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navcontent"
-            aria-controls="navcontent"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          ></button>
-          <div class="collapse navbar-collapse" id="navcontent">
-            <ul class="navbar-nav me-auto mb-lg-0 m-2">
-              <li>
-                <a class="nav-link" href="/"
-                  ><img
-                    id="logo"
-                    src="https://i.postimg.cc/hvGRnvDP/logo.jpg"
-                    alt="logo"
-                /></a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/">HOME</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/login">LOGIN</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/register">REGISTER</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/contact">CONTACT</a>
-              </li>
-              <div id="bag" class="side back-card my-auto">
-                <div class="login-box">
-                  <form>
-                    <a
-                      id="bag"
-                      data-bs-toggle="modal"
-                      data-bs-target="#modal"
-                      href="/bag"
-                    >
-                      <span></span>
-                      <span></span>
-                      <span></span>
-                      <span></span>
-                      <i class="bi bi-bag"></i>
-                    </a>
-                  </form>
-                </div>
-              </div>
-            </ul>
-          </div>
-        </div>
-        <div class="wrap">
-          <div class="search px-3">
-            <input type="text" class="searchTerm" placeholder="Search..." />
-            <button type="submit" class="searchButton">
-              <i class="bi bi-search"></i>
-            </button>
-          </div>
-        </div>
-        <ul id="profile" class="navbar-nav me-auto mb-lg-0 m-2">
-          <li>
-            <a class="nav-link" href="/user"><userImage /></a>
-          </li>
-        </ul>
-      </nav>
-    </div>
-  </div> -->
   <div id="page">
     <div id="nav1">
       <nav class="navbar navbar-expand-md">
-        <div class="container-fluid">
+        <div class="container"> 
           <button
             id="button"
             class="navbar-toggler btn"
@@ -85,9 +12,9 @@
             aria-controls="navcontent"
             aria-expanded="false"
             aria-label="Toggle navigation"
-          ></button>
+          ><i class="bi bi-arrow-down-circle-fill"></i></button>
           <div class="collapse navbar-collapse" id="navcontent">
-            <ul class="navbar-nav me-auto mb-lg-0 m-2">
+            <ul class="navbar-nav me-auto mb-lg-0 m-2 ">
               <div v-if="user" class="d-md-flex">
                 <li>
                   <a class="nav-link" href="/user"
@@ -103,12 +30,6 @@
                 <li class="nav-item">
                   <router-link class="nav-link" to="/">HOME</router-link>
                 </li>
-                <!-- <li class="nav-item">
-                  <a class="nav-link" href="/login">LOGIN</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="/register">REGISTER</a>
-                </li> -->
                 <li class="nav-item">
                   <router-link class="nav-link" to="/contact">CONTACT</router-link>
                 </li>
@@ -138,26 +59,10 @@
                   <router-link class="nav-link" to="/contact">Contact</router-link>
                 </li>
               </div>
-              <!-- <div class="side back-card my-auto">
-                <div class="login-box">
-                  <form>
-                    <a href="/bag">
-                      <span></span>
-                      <span></span>
-                      <span></span>
-                      <span></span>
-                      <i class="bi bi-bag"></i>
-                    </a>
-                  </form>
-                </div>
-              </div> -->
             </ul>
           </div>
         </div>
         <div class="wrap d-md-flex">
-          <!-- <div>
-            <button class="btn" @click="logout">Logout</button>
-          </div> -->
           <ul id="profile" class="navbar-nav me-auto mb-lg-0 m-2">
           <li>
             <a class="nav-link" href="/user"><userImage /></a>
@@ -165,7 +70,6 @@
         </ul>
         </div>
       </nav>
-      <!-- </div> -->
     </div>
   </div>
 <div class="modal fade" tabindex="-1" id="modal"
@@ -217,19 +121,18 @@ export default {
 </script>
 
 <style scoped>
-#page {
-  padding-bottom: 10px;
-}
 #nav1 {
-  background-color: gray;
+  background-color: black;
+  
 }
 li {
   margin: auto;
-  padding-left: 2px;
-  padding-right: 2px;
+  
 }
 .nav-link {
   color: white;
+  display: flex;
+  justify-content: space-around;
 }
 
 #logo {
@@ -238,7 +141,7 @@ li {
   max-width: 50px;
 }
 #button {
-  background-color: black;
+  background-color: #03e9f4;
   margin: auto;
 }
 a:hover .nav-link {
@@ -270,8 +173,6 @@ a:hover .nav-link {
 }
 .wrap {
   margin: auto;
-  width: 30%;
-  max-height: 30px;
 }
 #filter {
   color: white;

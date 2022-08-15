@@ -1,5 +1,5 @@
 <template>
-  <div class="login-box">
+  <div class="login-box mt-3">
     <img id="logo" src="https://i.postimg.cc/hvGRnvDP/logo.jpg" alt="logo" />
     <h2>Register</h2>
     <form
@@ -77,7 +77,7 @@ export default {
   margin: auto;
   max-width: 400px;
   padding: 40px;
-  background: rgba(0, 0, 0, 0.5);
+  background: black;
   box-sizing: border-box;
   box-shadow: 0 15px 25px rgba(0, 0, 0, 0.6);
   border-radius: 15px;

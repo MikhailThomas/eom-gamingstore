@@ -1,7 +1,10 @@
 <template>
-  <navbar/>
+<div class="cont">
+  <div id="cloud-intro"><navbar/>
   <router-view/>
-  <footerCom/>
+  <footerCom/></div>
+</div>
+  
 </template>
 
 <script>
@@ -26,11 +29,36 @@ export default {
   display: none;
 }
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
 }
+.cont{
+  width: 100%;
+  height: 100%;
+  min-width: 500px;
+  min-height: 500px;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  color:black;
+}
+.cont{
+  background-color: rgb(48, 46, 46);
+}
+#cloud-intro{
+  height: 100%;
+  background: url(https://static.radulescu.me/examples/clouds/clouds1000.png);
+  background: url(https://static.radulescu.me/examples/clouds/clouds1000.png) 0 200px,
+              url(https://static.radulescu.me/examples/clouds/clouds1200_1.png) 0 300px,
+              url(https://static.radulescu.me/examples/clouds/clouds1000_blur3.png) 100px 250px;
+	animation: wind 20s linear infinite;
+}
+@keyframes wind{
+  0% {
+    background-position: 0 200px, 0 300px, 100px 250px;
+  }
+  100% {
+    background-position: 1000px 200px, 1200px 300px, 1100px 250px;
+  }
 
+}
 </style>

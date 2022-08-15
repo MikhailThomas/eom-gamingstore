@@ -40,7 +40,7 @@ iframe{
 
 .contact-box{
   max-width: 850px;
-  background-color: #fff;
+  background-color: black;
   box-shadow: 0px 0px 19px 5px rgba(0,0,0,0.19);
 }
 
@@ -55,28 +55,27 @@ iframe{
 }
 
 h2{
+  color: white;
   position: relative;
   padding: 0 0 10px;
   margin-bottom: 10px;
 }
 
 h2:after{
-  content: '';
-    position: absolute;
-    left: 50%;
+    margin: auto;
     bottom: 0;
     transform: translateX(-50%);
     height: 4px;
     width: 50px;
     border-radius: 2px;
-    background-color: #2ecc71;
+    background-color: #03e9f4;
 }
 
 .field{
   width: 100%;
   border: 2px solid rgba(0, 0, 0, 0);
   outline: none;
-  background-color: rgba(230, 230, 230, 0.6);
+  background-color: white;
   padding: 0.5rem 1rem;
   font-size: 1.1rem;
   margin-bottom: 22px;
@@ -94,8 +93,7 @@ textarea{
 .btn{
   width: 100%;
   padding: 0.5rem 1rem;
-  background-color: #2ecc71;
-  color: #fff;
+  color: white;
   font-size: 1.1rem;
   border: none;
   outline: none;
@@ -104,7 +102,8 @@ textarea{
 }
 
 .btn:hover{
-    background-color: #27ae60;
+  color: white;
+  background-color: #03e9f4;
 }
 
 .field:focus{

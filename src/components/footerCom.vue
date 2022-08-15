@@ -24,7 +24,7 @@ export default {
 
     position: sticky;
     padding: 5px;
-    background-color: gray;
+    background-color: black;
     color: white;
 }
 

@@ -1,4 +1,5 @@
 <template>
+<div id="page">
   <div class="content-profile-page">
    <div class="profile-user-page card">
       <div class="img-user-profile">
@@ -19,6 +20,7 @@
         <li><a><strong>Delete acc</strong></a></li>
        </ul>
       </div>
+    </div>
     </div>
 </template>
 

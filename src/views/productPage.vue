@@ -1,6 +1,6 @@
 <template>
 <section id="page" class="container">
-  <div v-if="singleProduct" id="" class="row">
+  <div v-if="singleProduct" id="info" class="row py-2">
     <div class="col-md-6">
       <img id="product" :src="singleProduct[0].img" alt="">
     </div>
@@ -42,8 +42,13 @@ export default {
 
 </script>
 
-<style>
-#product{
-border: solid;
+<style scoped>
+#page{
+  height: 100vh;
+}
+#info{
+  margin: auto;
+  top: 50%;
+  background-color: white;
 }
 </style>

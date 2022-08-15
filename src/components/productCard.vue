@@ -1,6 +1,6 @@
 <template>
-<div id="search ">
-    <div v-if="products" class="justify-content-center mt-3">
+<div id="search">
+    <div v-if="products" class="mt-3">
       <input
         type="text"
         class="searchTerm"
@@ -28,10 +28,10 @@
       </select>
     </button>
   </div>
-  <div id="page" class="container">
-    <div class="new-card row" v-if="products">
+  <div id="page" class="container mx-auto">
+    <div class="new-card row d-flex justify-content-around" v-if="products">
       <div
-        class="card col-sm-3 mx-5 my-3"
+        class="card col-sm-3 mx-2 my-3"
         v-for="product in products"
         :key="product"
       >
@@ -39,11 +39,10 @@
           <router-link
             :to="{ name: 'productPage', params: { id: product.productid } }"
           >
-            <div class="image mt-3"><img :src="product.img" alt="" /></div>
+            <div class="image mt-3"><img class="img-fluid" :src="product.img" alt="" /></div>
             <div class="info">
               <h2>R{{ product.price }}.00</h2>
               <h3>{{ product.title }}</h3>
-              <!-- <router-link to="{name: 'productPage'}"> -->
               <button class="btn">View more</button>
               <!-- </router-link> -->
             </div>
@@ -140,6 +139,7 @@ cards.forEach(card => card.addEventListener('click', transition));
 }
 
 .new-card {
+  border: hidden;
   border-radius: 10px;
   transition: 0.44s;
   text-align: center;
@@ -150,6 +150,11 @@ cards.forEach(card => card.addEventListener('click', transition));
 .card {
   transition: 0.44s linear;
   color: black;
+  background-color: rgba(0, 0, 0, 0.444);
+}
+.card:hover{
+  transform: scale(1.07) skewY(0deg);
+  transition: 0.44s linear;
 }
 
 .img-fluid{
@@ -161,7 +166,7 @@ img:hover{
   border-radius: 40px;
   transform: scale(1.07) skewY(0deg);
   transition: 0.44s linear;
-  color: blue;
+  color: #03e9f4;
 }
 
 .card {
@@ -169,22 +174,35 @@ img:hover{
   border: none;
 }
 
+.image{
+  margin: auto;
+}
 div.image {
   background-color: #dadce2;
   background-position: center;
   background-size: cover;
   overflow-x: hidden;
   object-fit: contain;
-  border-radius: 30px;
-  border: solid;
-  
 }
 
-h2 {
+.btn{
+  color: #ffffff;;
+}
+
+h2, h3 {
   text-align: center;
+  color: #03e9f4;
+}
+h3{
+  text-decoration: underline;
+  text-decoration-color: white;
 }
 
 .info{
-  margin-top: 30px;
+  margin-top: 30px
+}
+
+a{
+  text-decoration: none;
 }
 </style>
