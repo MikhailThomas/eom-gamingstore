@@ -42,9 +42,6 @@ export default createStore({
         name: "Z-A"
       },
       {
-        name: "catergory"
-      },
-      {
         name: "genre"
       }
     ],

@@ -1,119 +1,139 @@
 <template>
-<div id="page">
-<div id="nav1">
-  <nav class="navbar navbar-expand-md">
-    <div class="container-fluid">
-      <button
-        id="button"
-        class="navbar-toggler btn"
-        type="button"
-        data-bs-toggle="collapse"
-        data-bs-target="#navcontent"
-        aria-controls="navcontent"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      ></button>
-      <div class="collapse navbar-collapse" id="navcontent">
-        <ul class="navbar-nav me-auto mb-lg-0 m-2">
-          <li>
-            <a class="nav-link" href="/user"><img id="logo" src="https://i.postimg.cc/hvGRnvDP/logo.jpg" alt="logo"></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/">HOME</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/login">LOGIN</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/register">REGISTER</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/contact">CONTACT</a>
-          </li>
-          <div id="bag" class="side back-card my-auto">
-      <div class="login-box">
-      <form>
-      <a id="bag" data-bs-toggle="modal" data-bs-target="#modal" href="/bag">
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <i class="bi bi-bag"></i>
-      </a>
-      </form>
-      </div>
-    </div>
-        </ul>
-      </div>
-    </div>
-    <div class="wrap">
-   <div class="search">
-      <input type="text" class="searchTerm" placeholder="Search...">
-      <button type="submit" class="searchButton">
-        <i class="bi bi-search"></i>
-     </button>
-   </div>
-</div>
-  </nav>
-  </div>
-  </div>
-
-<!-- Modal -->
-<div class="modal fade" id="modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog mw-100 p-5">
-              <div class="modal-content ">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLabel">Cart</h5>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                  <div class="container">
-                    <div class="row">
-                      <div id="product" class="">
-                        products go here
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-                    Check Out
-                  </button>
-                  <button type="button" class="btn btn-primary">Clear Cart</button>
+  <div id="page">
+    <div id="nav1">
+      <nav class="navbar navbar-expand-md">
+        <div class="container-fluid">
+          <button
+            id="button"
+            class="navbar-toggler btn"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navcontent"
+            aria-controls="navcontent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          ></button>
+          <div class="collapse navbar-collapse" id="navcontent">
+            <ul class="navbar-nav me-auto mb-lg-0 m-2">
+              <li>
+                <a class="nav-link" href="/"
+                  ><img
+                    id="logo"
+                    src="https://i.postimg.cc/hvGRnvDP/logo.jpg"
+                    alt="logo"
+                /></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/">HOME</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/login">LOGIN</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/register">REGISTER</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/contact">CONTACT</a>
+              </li>
+              <div id="bag" class="side back-card my-auto">
+                <div class="login-box">
+                  <form>
+                    <a
+                      id="bag"
+                      data-bs-toggle="modal"
+                      data-bs-target="#modal"
+                      href="/bag"
+                    >
+                      <span></span>
+                      <span></span>
+                      <span></span>
+                      <span></span>
+                      <i class="bi bi-bag"></i>
+                    </a>
+                  </form>
                 </div>
               </div>
-            </div>
+            </ul>
           </div>
+        </div>
+        <div class="wrap">
+          <div class="search px-3">
+            <input type="text" class="searchTerm" placeholder="Search..." />
+            <button type="submit" class="searchButton">
+              <i class="bi bi-search"></i>
+            </button>
+          </div>
+        </div>
+        <ul id="profile" class="navbar-nav me-auto mb-lg-0 m-2">
+          <li>
+            <a class="nav-link" href="/user"><userImage /></a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+<div class="modal fade" tabindex="-1" id="modal"
+    aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Modal body text goes here.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Clear</button>
+        <a href="/card"><button type="button" class="btn btn-primary">Checkout</button></a>
+        
+      </div>
+    </div>
+  </div>
+</div>
 </template>
 
 <script>
-
+import userImage from "./userImage.vue";
+export default {
+  components: {
+    userImage,
+  },
+};
 </script>
 
 <style scoped>
-#page{
+#page {
   padding-bottom: 10px;
 }
-#nav1{
-    background-color: gray;
+#nav1 {
+  background-color: gray;
 }
-li{
+li {
   margin: auto;
   padding-left: 2px;
   padding-right: 2px;
 }
-.nav-link{
+.nav-link {
   color: white;
 }
 
-#logo{
+#logo {
   margin: auto;
   max-height: 50px;
   max-width: 50px;
 }
-#button{
+#button {
   background-color: black;
   margin: auto;
+}
+a:hover .nav-link {
+  background: #03e9f4;
+  color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 0 5px #03e9f4, 0 0 25px #03e9f4, 0 0 50px #03e9f4,
+    0 0 100px #03e9f4;
 }
 .search {
   width: 100%;
@@ -122,32 +142,32 @@ li{
 
 .searchTerm {
   width: 100%;
-  border: 3px solid #00B4CC;
+  border: 3px solid #00b4cc;
   border-radius: 5px 0 0 5px;
   outline: none;
 }
 
 .searchButton {
   width: 30px;
-  border: 1px solid #00B4CC;
-  background: #00B4CC;
+  border: 1px solid #00b4cc;
+  background: #00b4cc;
   text-align: center;
   color: #fff;
   cursor: pointer;
 }
-.wrap{
+.wrap {
   margin: auto;
   width: 30%;
   max-height: 30px;
 }
-#filter{
+#filter {
   color: white;
   padding: 5px;
   margin: 5px 30px;
   margin-top: 0%;
 }
-#filter.btn:hover{
-  background-color: #00B4CC;
+#filter.btn:hover {
+  background-color: #00b4cc;
 }
 a:hover {
   background: #03e9f4;
@@ -157,7 +177,7 @@ a:hover {
     0 0 100px #03e9f4;
 }
 
-nav-link a:active{
+nav-link a:active {
   background: #03e9f4;
   color: #fff;
   border-radius: 5px;
@@ -172,7 +192,7 @@ nav-link a:active{
   color: #03e9f4;
   overflow: hidden;
   transition: 0.5s;
-  letter-spacing: 4px
+  letter-spacing: 4px;
 }
 
 .login-box a:hover {
@@ -259,12 +279,18 @@ nav-link a:active{
   }
 }
 
-#modal{
-  max-width: 500px;
-  margin: auto;
+.modal{
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 500px;
+  z-index: 10000;
+  overflow: auto;
+  overflow-y: auto;
 }
 
-#product{
+#product {
   max-width: 50px;
 }
 </style>

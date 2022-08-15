@@ -1,7 +1,7 @@
 <template>
-  <div class="container">
-    <div class="card-checkout">
-        <div class="card-logo"></div>
+  <div id="page" class="container">
+    <div id="card" class="card-checkout">
+        <div class="card-logo"><img id="logo" src="https://i.postimg.cc/Vv4GDSyb/card.png" alt=""></div>
         <div class="card-options">
             <form class="card-details">
                 <input class="cc-name" placeholder="Card Holder" required>
@@ -19,23 +19,70 @@
 
 <script>
 export default {
+    data() {return{
 
+    }
+    },
+    mounted() {
+        (function() {
+    var ccName = $('input.cc-name'),
+        ccNumber = $('input.cc-number'),
+        ccExpiry = $('input.cc-expiry'),
+        ccCVC = $('input.cc-cvc');
+    
+    $('[data-numeric]').payment('restrictNumeric');
+    
+    ccNumber.payment('formatCardNumber');
+    ccExpiry.payment('formatCardExpiry');
+    ccCVC.payment('formatCardCVC');
+    
+    ccName.on('focus', function() {
+        $(this).data('placeholder', $(this).attr('placeholder'))
+        $(this).attr('placeholder', 'Name Surname');
+    }).blur(function() {
+        $(this).attr('placeholder', $(this).data('placeholder'))
+    });
+    
+    ccNumber.on('focus', function() {
+        $(this).data('placeholder', $(this).attr('placeholder'))
+        $(this).attr('placeholder', 'xxxx xxxx xxxx xxxx');
+    }).blur(function() {
+        $(this).attr('placeholder', $(this).data('placeholder'))
+    });
+    
+    ccExpiry.on('focus', function() {
+        $(this).data('placeholder', $(this).attr('placeholder'))
+        $(this).attr('placeholder', 'MM/YYYY');
+    }).blur(function() {
+        $(this).attr('placeholder', $(this).data('placeholder'))
+    });
+    
+    ccCVC.on('focus', function() {
+        $(this).data('placeholder', $(this).attr('placeholder'))
+        $(this).attr('placeholder', 'xxxx');
+    }).blur(function() {
+        $(this).attr('placeholder', $(this).data('placeholder'))
+    });
+})();
+    }
 }
+
 </script>
 
 <style scoped>
-@import url(https://fonts.googleapis.com/css?family=Roboto:400,500,700);
-
-
+#page{
+    height: 100vh;
+}
+#logo{
+    max-width: 100%;
+    max-height: 100%;
+}
 .card-checkout {
-    position: absolute;
+    margin: auto;
     width: 30%;
-    min-width: 350px;
+    min-width: 300px;
     height: 70%;
-    min-height: 500px;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    min-height: 400px;
     box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.4);
 }
 

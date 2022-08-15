@@ -5,7 +5,7 @@
   <div class="card col-sm-3 my-3"  v-for="product in products" :key="product">
     <div class='side front-card'>
       <router-link :to="{name: 'productPage', params: {id: product.productid} }">
-      <div class="image mt-3"><img :src="product.img" alt=""></div>
+      <div class="image mt-3"><img class="img-fluid" :src="product.img" alt=""></div>
       <div class="info">
         <h2>R{{ product.price }}.00</h2>
       <h3>{{ product.title }}</h3>
@@ -69,6 +69,11 @@ cards.forEach(card => card.addEventListener('click', transition));
   color: black;
 }
 
+.img-fluid{
+  height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
 img:hover{
   border-radius: 40px;
   transform: scale(1.07) skewY(0deg);
@@ -86,8 +91,10 @@ div.image {
   background-position: center;
   background-size: cover;
   overflow-x: hidden;
+  object-fit: contain;
   border-radius: 30px;
   border: solid;
+  
 }
 
 h2 {

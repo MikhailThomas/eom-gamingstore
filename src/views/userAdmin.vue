@@ -21,10 +21,16 @@
       </div>
     </div>
   <table class="table table-bordered">
+    <thead>
+      <tr>
       <th><button>add product</button></th>
+</tr>
+    </thead>
     <tbody>
+
       <div v-if="products">
         <tr v-for="product in products" :key="product.id">
+
         <td>{{product.productid}}</td>
         <td>{{product.title}}</td>
         <td>{{product.genre}}</td>
@@ -58,7 +64,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 td{
     border: 0.5px solid;
     border-bottom: lightblue solid;
