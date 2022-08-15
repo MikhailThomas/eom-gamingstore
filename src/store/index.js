@@ -29,22 +29,6 @@ export default createStore({
         img: "https://i.postimg.cc/3NqVHZfn/xbox.jpg"
       },
     ],
-    filter: [{
-        name: "Price low - high"
-      },
-      {
-        name: "Price high - low"
-      },
-      {
-        name: "A-Z"
-      },
-      {
-        name: "Z-A"
-      },
-      {
-        name: "genre"
-      }
-    ],
     products: null,
     product: null,
     users: null,
@@ -64,6 +48,15 @@ export default createStore({
     }
   },
   actions: {
+    logout: async (context) => {
+      console.log("Fired")
+      context.state.user = null;
+      router.push("/");
+    },
+    sendHome: async (context) => {
+      context.commit("setUser", null);
+      router.push("/");
+    },
     getProducts: async (context) => {
       fetch("https://mmgaming.herokuapp.com/products")
         .then((res) => res.json())

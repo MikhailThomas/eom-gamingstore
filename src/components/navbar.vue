@@ -1,5 +1,5 @@
 <template>
-  <div id="page">
+  <!-- <div id="page">
     <div id="nav1">
       <nav class="navbar navbar-expand-md">
         <div class="container-fluid">
@@ -71,6 +71,102 @@
         </ul>
       </nav>
     </div>
+  </div> -->
+  <div id="page">
+    <div id="nav1">
+      <nav class="navbar navbar-expand-md">
+        <div class="container-fluid">
+          <button
+            id="button"
+            class="navbar-toggler btn"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navcontent"
+            aria-controls="navcontent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          ></button>
+          <div class="collapse navbar-collapse" id="navcontent">
+            <ul class="navbar-nav me-auto mb-lg-0 m-2">
+              <div v-if="user" class="d-md-flex">
+                <li>
+                  <a class="nav-link" href="/user"
+                    ><img
+                      id="logo"
+                      src="https://i.postimg.cc/hvGRnvDP/logo.jpg"
+                      alt="logo"
+                  /></a>
+                </li>
+                <li class="nav-item">
+                  <h2>Welcome {{user.fullName }} !</h2>
+                </li>
+                <li class="nav-item">
+                  <router-link class="nav-link" to="/">HOME</router-link>
+                </li>
+                <!-- <li class="nav-item">
+                  <a class="nav-link" href="/login">LOGIN</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/register">REGISTER</a>
+                </li> -->
+                <li class="nav-item">
+                  <router-link class="nav-link" to="/contact">CONTACT</router-link>
+                </li>
+                <li>
+            <button class="btn" @click="logout">Logout</button>
+          </li>
+              </div>
+              <div v-else class="d-md-flex">
+                <li>
+                  <a class="nav-link" href="/user"
+                    ><img
+                      id="logo"
+                      src="https://i.postimg.cc/hvGRnvDP/logo.jpg"
+                      alt="logo"
+                  /></a>
+                </li>
+                <li class="nav-item">
+                  <router-link class="nav-link" to="/">HOME</router-link>
+                </li>
+                <li class="nav-item">
+                  <router-link class="nav-link" to="/login">Login</router-link>
+                </li>
+                <li class="nav-item">
+                  <router-link class="nav-link" to="/register">Register</router-link>
+                </li>
+                <li class="nav-item">
+                  <router-link class="nav-link" to="/contact">Contact</router-link>
+                </li>
+              </div>
+              <!-- <div class="side back-card my-auto">
+                <div class="login-box">
+                  <form>
+                    <a href="/bag">
+                      <span></span>
+                      <span></span>
+                      <span></span>
+                      <span></span>
+                      <i class="bi bi-bag"></i>
+                    </a>
+                  </form>
+                </div>
+              </div> -->
+            </ul>
+          </div>
+        </div>
+        <div class="wrap d-md-flex">
+          <!-- <div>
+            <button class="btn" @click="logout">Logout</button>
+          </div> -->
+          <ul id="profile" class="navbar-nav me-auto mb-lg-0 m-2">
+          <li>
+            <a class="nav-link" href="/user"><userImage /></a>
+          </li>
+        </ul>
+        </div>
+      </nav>
+      <!-- </div> -->
+    </div>
   </div>
 <div class="modal fade" tabindex="-1" id="modal"
     aria-labelledby="exampleModalLabel"
@@ -99,6 +195,23 @@ import userImage from "./userImage.vue";
 export default {
   components: {
     userImage,
+  }, 
+  methods: {
+    logout() {
+      console.log("Fired")
+      this.$store.dispatch("logout");
+    },
+  },
+  computed:{
+     products() {
+      return this.$store.state.products;
+    },
+    user() {
+      return this.$store.state.user;
+    },
+  },
+    mounted() {
+    this.$store.dispatch("getProducts");
   },
 };
 </script>

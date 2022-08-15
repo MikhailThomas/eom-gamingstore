@@ -10,7 +10,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 #userImage{
     height: 50px;
     width: 50px;

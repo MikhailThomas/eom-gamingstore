@@ -2,7 +2,7 @@
   <div class="content-profile-page">
    <div class="profile-user-page card">
       <div class="img-user-profile">
-        <img class="profile-bgHome" src="" />
+        <img id="userImage" class="profile-bgHome" src="https://i.postimg.cc/Vv4GDSyb/card.png" />
         <p></p>
            </div>
           <div class="user-profile-data">
@@ -33,9 +33,13 @@ export default {
 </script>
 
 <style scoped>
+#userImage{
+  max-width: 100%;
+  max-height: 100%;
+}
 .content-profile-page {
   margin: 1em auto;
-  width: 44.23em;
+  max-width: 50rem;
 }
 
 .card {
@@ -45,18 +49,12 @@ export default {
   border: .1em solid rgba(0, 0, 0, 0.2);
   margin-bottom: 1em; 
 }
-
-.profile-user-page .img-user-profile {
-	margin: 0 auto;
-  text-align: center; 
-}
 .profile-user-page .img-user-profile .profile-bgHome {
 	border-bottom: .2em solid #f5f5f5;
-  width: 44.23em;
   height: 16em;
   }
 .profile-user-page .img-user-profile .avatar {
-	margin: 0 auto;
+	margin: auto;
   background: #fff;
   width: 7em;
   height: 7em;
