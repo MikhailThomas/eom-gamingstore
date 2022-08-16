@@ -31,7 +31,7 @@
   <div id="page" class="container">
     <div class="new-card row" v-if="products">
       <div
-        class="card col-sm-3 mx-5 my-3"
+        class="card col-md-3 mx-5 my-3"
         v-for="product in products"
         :key="product"
       >
@@ -49,7 +49,8 @@
             </div>
           </router-link>
         </div>
-        <bag />
+        <!-- <button @click="addToCart" class="btn btn-info fs-3 text-black w-100">Add to cart</button> -->
+        <button @click="addToCart" class="btn btn-info fs-3 text-black w-100">Add to cart</button>
       </div>
     </div>
     <div v-else>
@@ -97,6 +98,12 @@ export default {
         });
       }
     },
+     addToCart() {
+      this.$store.dispatch("addToCart", 
+      {
+        id: this.productid,
+      });
+    },
   },
 computed: {
     products() {
@@ -108,7 +115,6 @@ computed: {
         if (this.genre !== "All" && this.genre !== product.genre) {
           isMatch = false;
         }
-        let up = document.getElementById("order").value;
         return isMatch;
       });
     },

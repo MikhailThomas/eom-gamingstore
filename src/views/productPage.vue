@@ -1,4 +1,4 @@
-<template>
+  <template>
 <section id="page" class="container">
   <div v-if="singleProduct" id="" class="row">
     <div class="col-md-6">

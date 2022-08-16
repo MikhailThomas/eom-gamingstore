@@ -6,18 +6,24 @@
         <p></p>
            </div>
           <div class="user-profile-data">
-              <h1>mikhail{{ name/surname }}</h1>
+            <div v-if="user">
+
+              <!-- <h1>mikhail{{ name/surname }}</h1> -->
+              <h1>Username:{{ user.fullName }}</h1>
               <button>change image</button>
-            <p>email{{ email }}</p>
-          </div> 
+            <p>email:{{ user.email }}</p>
+            <p>phonenumber:{{ user.phoneNumber }}</p>
+           
           <div class="description-profile">
-            <strong> date created </strong>
+            <!-- <p> date created:{{ user.joinDate }}</p> -->
           </div>
+         </div> 
        <ul class="data-user">
-        <li><a><strong>logout{{ logout }}</strong></a></li>
+         <li><button @click="logout">logout</button></li>
         <li><a><strong><bag/></strong></a></li>
-        <li><a><strong>Delete acc</strong></a></li>
+        <li><button id="delete" @click="$store.dispatch('deleteuser',user.id)">delete Account</button></li>
        </ul>
+         </div> 
       </div>
     </div>
 </template>
@@ -28,7 +34,19 @@ import bag from '../components/bag.vue'
 export default {
     components: {
         bag
-    }
+    },
+     methods: {
+    logout() {
+      console.log("Fired");
+      this.$store.dispatch("logout");
+    },
+  },
+
+    computed: {
+    user() {
+     return this.$store.state.user
+    }  
+    },
 }
 </script>
 

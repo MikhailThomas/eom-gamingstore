@@ -1,5 +1,43 @@
 <template>
-  <div id="page" class="container">
+<div class="container" > 
+    <bag/>
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary " data-bs-toggle="modal" data-bs-target="#exampleModal">
+ Pay over here
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Fill in details please </h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+<div class="card-logo"><img id="logo" src="https://i.postimg.cc/Vv4GDSyb/card.png" alt=""></div>
+        <div class="card-options">
+            <form class="card-details">
+                <input class="cc-name" placeholder="Card Holder" required>
+                <input class="cc-number" placeholder="Card Number" data-numeric required>
+                <input class="cc-expiry inline" placeholder="Expiry Date" required><input class="cc-cvc" placeholder="CVC" data-numeric required>
+                <button class="button button-scan">Scan Card</button>
+            </form>
+        </div>
+        <div class="card-confirm">
+            <button class="button button-confirm">Complete Order</button>
+        </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+
+
+  <!-- <div id="page" class="container">
     <div id="card" class="card-checkout">
         <div class="card-logo"><img id="logo" src="https://i.postimg.cc/Vv4GDSyb/card.png" alt=""></div>
         <div class="card-options">
@@ -13,59 +51,63 @@
         <div class="card-confirm">
             <button class="button button-confirm">Complete Order</button>
         </div>
-    </div>
-</div>
+    </div> -->
+
+
+
 </template>
 
 <script>
+import  bag from '../components/bag.vue'
 export default {
+     components: { bag},
     data() {return{
 
     }
     },
-    mounted() {
-        (function() {
-    var ccName = $('input.cc-name'),
-        ccNumber = $('input.cc-number'),
-        ccExpiry = $('input.cc-expiry'),
-        ccCVC = $('input.cc-cvc');
+    mounted() {}}
+//         (function() {
+//     var ccName = $('input.cc-name'),
+//         ccNumber = $('input.cc-number'),
+//         ccExpiry = $('input.cc-expiry'),
+//         ccCVC = $('input.cc-cvc');
     
-    $('[data-numeric]').payment('restrictNumeric');
+//     $('[data-numeric]').payment('restrictNumeric');
     
-    ccNumber.payment('formatCardNumber');
-    ccExpiry.payment('formatCardExpiry');
-    ccCVC.payment('formatCardCVC');
+//     ccNumber.payment('formatCardNumber');
+//     ccExpiry.payment('formatCardExpiry');
+//     ccCVC.payment('formatCardCVC');
     
-    ccName.on('focus', function() {
-        $(this).data('placeholder', $(this).attr('placeholder'))
-        $(this).attr('placeholder', 'Name Surname');
-    }).blur(function() {
-        $(this).attr('placeholder', $(this).data('placeholder'))
-    });
+//     ccName.on('focus', function() {
+//         $(this).data('placeholder', $(this).attr('placeholder'))
+//         $(this).attr('placeholder', 'Name Surname');
+//     }).blur(function() {
+//         $(this).attr('placeholder', $(this).data('placeholder'))
+//     });
     
-    ccNumber.on('focus', function() {
-        $(this).data('placeholder', $(this).attr('placeholder'))
-        $(this).attr('placeholder', 'xxxx xxxx xxxx xxxx');
-    }).blur(function() {
-        $(this).attr('placeholder', $(this).data('placeholder'))
-    });
+//     ccNumber.on('focus', function() {
+//         $(this).data('placeholder', $(this).attr('placeholder'))
+//         $(this).attr('placeholder', 'xxxx xxxx xxxx xxxx');
+//     }).blur(function() {
+//         $(this).attr('placeholder', $(this).data('placeholder'))
+//     });
     
-    ccExpiry.on('focus', function() {
-        $(this).data('placeholder', $(this).attr('placeholder'))
-        $(this).attr('placeholder', 'MM/YYYY');
-    }).blur(function() {
-        $(this).attr('placeholder', $(this).data('placeholder'))
-    });
+//     ccExpiry.on('focus', function() {
+//         $(this).data('placeholder', $(this).attr('placeholder'))
+//         $(this).attr('placeholder', 'MM/YYYY');
+//     }).blur(function() {
+//         $(this).attr('placeholder', $(this).data('placeholder'))
+//     });
     
-    ccCVC.on('focus', function() {
-        $(this).data('placeholder', $(this).attr('placeholder'))
-        $(this).attr('placeholder', 'xxxx');
-    }).blur(function() {
-        $(this).attr('placeholder', $(this).data('placeholder'))
-    });
-})();
-    }
-}
+//     ccCVC.on('focus', function() {
+//         $(this).data('placeholder', $(this).attr('placeholder'))
+//         $(this).attr('placeholder', 'xxxx');
+//     }).blur(function() {
+//         $(this).attr('placeholder', $(this).data('placeholder'))
+//     });
+// })();
+//     }
+// }
 
 </script>
 
@@ -186,5 +228,8 @@ export default {
     height: 15%;
     background-color: #62AEFA;
     cursor: pointer;
+}
+.container{
+    height: 500px;
 }
 </style>

@@ -98,7 +98,7 @@
                   /></a>
                 </li>
                 <li class="nav-item">
-                  <h2>Welcome {{user.fullName }} !</h2>
+                  <h2>Welcome {{ user.fullName }} !</h2>
                 </li>
                 <li class="nav-item">
                   <router-link class="nav-link" to="/">HOME</router-link>
@@ -110,11 +110,27 @@
                   <a class="nav-link" href="/register">REGISTER</a>
                 </li> -->
                 <li class="nav-item">
-                  <router-link class="nav-link" to="/contact">CONTACT</router-link>
+                  <router-link class="nav-link" to="/contact"
+                    >CONTACT</router-link
+                  >
+                </li>
+                <li class="nav-item">
+                  <router-link class="nav-link" to="/card"
+                    >Cart</router-link
+                  >
+                </li>
+                <li class="nav-item">
+                  <router-link class="nav-link" to="/userAdmin"
+                    >ADMIN</router-link
+                  >
                 </li>
                 <li>
-            <button class="btn" @click="logout">Logout</button>
-          </li>
+                  <button class="btn" @click="logout">Logout</button>
+                </li>
+                 <li>
+              <router-link class="nav-link" to="/user"><userImage /></router-link>
+            </li>
+
               </div>
               <div v-else class="d-md-flex">
                 <li>
@@ -132,10 +148,14 @@
                   <router-link class="nav-link" to="/login">Login</router-link>
                 </li>
                 <li class="nav-item">
-                  <router-link class="nav-link" to="/register">Register</router-link>
+                  <router-link class="nav-link" to="/register"
+                    >Register</router-link
+                  >
                 </li>
                 <li class="nav-item">
-                  <router-link class="nav-link" to="/contact">Contact</router-link>
+                  <router-link class="nav-link" to="/contact"
+                    >Contact</router-link
+                  >
                 </li>
               </div>
               <!-- <div class="side back-card my-auto">
@@ -158,36 +178,52 @@
           <!-- <div>
             <button class="btn" @click="logout">Logout</button>
           </div> -->
-          <ul id="profile" class="navbar-nav me-auto mb-lg-0 m-2">
-          <li>
-            <a class="nav-link" href="/user"><userImage /></a>
-          </li>
-        </ul>
+          <!-- <ul id="profile" class="navbar-nav me-auto mb-lg-0 m-2">
+            <li>
+              <a class="nav-link" href="/user"><userImage /></a>
+            </li>
+          </ul> -->
         </div>
       </nav>
       <!-- </div> -->
     </div>
   </div>
-<div class="modal fade" tabindex="-1" id="modal"
+  <div
+    class="modal fade"
+    tabindex="-1"
+    id="modal"
     aria-labelledby="exampleModalLabel"
-    aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Modal title</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <p>Modal body text goes here.</p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Clear</button>
-        <a href="/card"><button type="button" class="btn btn-primary">Checkout</button></a>
-        
+    aria-hidden="true"
+  >
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Modal title</h5>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="modal-body">
+          <p>Modal body text goes here.</p>
+        </div>
+        <div class="modal-footer">
+          <button
+            type="button"
+            class="btn btn-secondary"
+            data-bs-dismiss="modal"
+          >
+            Clear
+          </button>
+          <a href="/card"
+            ><button type="button" class="btn btn-primary">Checkout</button></a
+          >
+        </div>
       </div>
     </div>
   </div>
-</div>
 </template>
 
 <script>
@@ -195,22 +231,22 @@ import userImage from "./userImage.vue";
 export default {
   components: {
     userImage,
-  }, 
+  },
   methods: {
     logout() {
-      console.log("Fired")
+      console.log("Fired");
       this.$store.dispatch("logout");
     },
   },
-  computed:{
-     products() {
+  computed: {
+    products() {
       return this.$store.state.products;
     },
     user() {
       return this.$store.state.user;
     },
   },
-    mounted() {
+  mounted() {
     this.$store.dispatch("getProducts");
   },
 };
@@ -392,7 +428,7 @@ nav-link a:active {
   }
 }
 
-.modal{
+.modal {
   position: absolute;
   top: 0;
   right: 0;

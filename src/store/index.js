@@ -31,6 +31,7 @@ export default createStore({
     ],
     products: null,
     product: null,
+    token: null,
     users: null,
     user: null,
     cart: null,
@@ -45,11 +46,21 @@ export default createStore({
     },
     setUser: (state, user) => {
       state.user = user;
-    }
+    },
+    getUser: (state, user) => {
+      state.user = user;
+    },
+    setToken: (state, token) => {
+      state.token = token;
+      console.log(token)
+    },
+    setcart: (state, cart) => {
+      let newCart = JSON.parse(cart);
+      state.cart = newCart;
+    },
   },
   actions: {
     logout: async (context) => {
-      console.log("Fired")
       context.state.user = null;
       router.push("/");
     },
@@ -60,13 +71,16 @@ export default createStore({
     getProducts: async (context) => {
       fetch("https://mmgaming.herokuapp.com/products")
         .then((res) => res.json())
-        .then((data) => context.commit("setProducts", data.results));
+        .then((data) => { 
+          context.commit("setProducts", data.results)
+        }
+        );
     },
     fetchSingleProduct : async (context, id) => {
       fetch("https://mmgaming.herokuapp.com/products/" + id)
         .then((res) => res.json())
         .then((data) => {
-          console.log(data.results)
+          // console.log(data.results)
           context.commit('setProduct', data.results)
           });
     },
@@ -148,24 +162,49 @@ login: async (context, payload) => {
       let res = await axios.post(nodeEOMP+"login", {
               email: data.email,
               password: data.password,
-      });
-      console.log(res.data)
+      },{
+      headers: {
+       'x-auth-token': context.state.token
+      }
+      }
+      );
+      // console.log(res.data)
+      // console.log(res.data.token)
+      // console.log(res.data.user)
+      context.state.user = res.data.user
+      context.state.token = res.data.token
+      // console.log(context.state.token)
     }catch(e) {
-      console.log(`e.message: ${e.message}`);
-      console.log(e.response + "res");
-      console.log(e.request);
+      // console.log(`e.message: ${e.message}`);
+      // console.log(e.response + "res");
+      // console.log(e.request);
     }
     router.push({
-        name: "home"
+        name: "home"  
       })
 },
 
 
 
-
+// edit item
+EditProduct: async (context, product) => {
+  fetch("https://mmgaming.herokuapp.com/products/" + product.id, {
+      method: "PUT",
+      body: JSON.stringify(product),
+      headers: {
+        "Content-type": "application/json; charset=UTF-8",
+        "x-auth-token": context.state.token,
+      },
+    })
+    .then((res) => res.json())
+    .then((data) => {
+      alert(data.msg);
+      context.dispatch("getProducts");
+    });
+},
   // Deletes user from db
   deleteuser: async (context, id) => {
-    fetch("http://localhost:3000/users/" + id, {
+    fetch("https://mmgaming.herokuapp.com/users/" + id, {
         method: "DELETE",
         headers: {
           "x-auth-token": context.state.token,
@@ -173,10 +212,29 @@ login: async (context, payload) => {
       })
       .then((res) => res.json())
       .then(() => context.dispatch("getusers"));
+      // router.push({
+      //   name: "home"
+      // })
+  },
+  // Deletes Item from db
+  deleteProduct: async (context, id) => {
+
+    fetch("https://mmgaming.herokuapp.com/products/" + id, {
+        method: "DELETE",
+        headers: {
+          "x-auth-token": context.state.token,
+        },
+      })
+     
+      .then((res) => res.json()) 
+      .then((data) => {
+        // console.log(data)
+        alert(data.msg)
+        context.dispatch("getProducts")});
   },
   // update user infor
   updateUser: async (context, user) => {
-    fetch("http://localhost:3000/users/" + user.id, {
+    fetch("https://mmgaming.herokuapp.com/users/" + user.id, {
         method: "PUT",
         body: JSON.stringify(user),
         headers: {
@@ -198,35 +256,21 @@ login: async (context, payload) => {
   //   })
   // },
   // retrieves all users
-  getusers: async (context) => {
-    fetch("http://localhost:3000/users", {
+  getUsers: async (context) => {
+    fetch("https://mmgaming.herokuapp.com/users", {
         headers: {
           "x-auth-token": await context.state.token,
         },
       })
-      // fetch("https://picknpay-apitest.herokuapp.com/products")
       .then((res) => res.json())
       .then((data) => {
-        context.commit("setusers", data.results);
+        context.commit("setUsers", data.results);
       });
   },
-  // retrieves all users
-  getusers: async (context) => {
-    fetch("http://localhost:3000/users", {
-        headers: {
-          "x-auth-token": await context.state.token,
-        },
-      })
-      // fetch("https://picknpay-apitest.herokuapp.com/products")
-      .then((res) => res.json())
-      .then((data) => {
-        context.commit("setusers", data.results);
-      });
-  },
-  // Cart stuffs
-  getCart: async (context, id) => {
+
+getCart: async (context, id) => {
     id = context.state.user.id;
-    fetch("http://localhost:3000/users/" + id + "/cart", {
+    fetch("https://mmgaming.herokuapp.com/users/" + id + "/cart", {
         method: "GET",
         headers: {
           "Content-type": "application/json; charset=UTF-8",
@@ -236,14 +280,51 @@ login: async (context, payload) => {
       .then((res) => res.json())
       .then((data) => {
         alert(data.msg)
-        console.log(data);
+        // console.log(data);
         let cart = JSON.stringify(data);
         context.commit("setcart", cart);
       });
   },
+  //adding a product
+  addProduct: async (context, payload) => {
+    console.log(payload)
+    console.log(context.state.user.id)
+    const {
+      title,
+      genre,
+      description,
+      img,
+      price,
+      quantity,
+    } = payload;
+    fetch("https://mmgaming.herokuapp.com/products", {
+        method: "POST",
+        body: JSON.stringify({
+          title: title,
+          genre: genre,
+          description: description,
+          img:img,
+          price: price,
+          quantity:quantity,
+          createdby: context.state.user.id
+        }),
+        headers: {
+          "Content-type": "application/json; charset=UTF-8",
+          "x-auth-token": `${context.state.token}`,
+        },
+        mode:"no-cors"
+      })
+      .then((res) => res.json())
+      .then((data) => {
+        alert(data.msg);
+        context.dispatch("getProducts");
+      });
+  },
+  // Cart stuffs
+  
   deleteCart: async (context, userid) => {
     userid = context.state.user.id
-    fetch("http://localhost:3000/users/" + userid + "/cart", {
+    fetch("https://mmgaming.herokuapp.com/users/" + userid + "/cart", {
         method: "DELETE",
         headers: {
           "Content-type": "application/json; charset=UTF-8",
@@ -258,27 +339,46 @@ login: async (context, payload) => {
       })
   },
   addToCart: async (context, id, userid) => {
-    userid = context.state.user.id;
-    fetch("http://localhost:3000/users/" + userid + "/cart", {
-        // fetch("http://localhost:3000/users/" + id +"/cart",{
-        // fetch("https://picknpay-apitest.herokuapp.com/register", {
-        method: "POST",
-        body: JSON.stringify(id),
-        headers: {
-          "Content-type": "application/json; charset=UTF-8",
-          "x-auth-token": context.state.token,
-        },
-      })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-        console.log(id);
-        alert(data.msg);
-        context.dispatch("getCart");
-      });
+    if (context.state.user === null) {
+      alert("Please login")
+    } else {
+      userid = context.state.user.id;
+      fetch("https://mmgaming.herokuapp.com/users/" + userid + "/cart", {
+          method: "POST",
+          body: JSON.stringify(id),
+          headers: {
+            "Content-type": "application/json; charset=UTF-8",
+            "x-auth-token": context.state.token,
+          },
+        })
+      
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data);
+          console.log(id);
+          alert(data.msg);
+          context.dispatch("getCart");
+        }); 
+    }
   },
   },
-
+//delete one cart item
+removeOne: async (context, id, userid) => {
+  userid = context.state.user.id
+  fetch("https://mmgaming.herokuapp.com/users/" + userid + "/cart/" + id, {
+      method: "DELETE",
+      headers: {
+        "Content-type": "application/json; charset=UTF-8",
+        "x-auth-token": context.state.token,
+      },
+    })
+    .then((res) => res.json())
+    .then((data) => {
+      alert(data.msg)
+      context.state.cart = null
+      context.dispatch("getCart")
+    })
+},
 
   modules: {},
 });

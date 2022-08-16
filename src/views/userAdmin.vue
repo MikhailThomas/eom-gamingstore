@@ -6,7 +6,7 @@
         <p></p>
            </div>
           <div class="user-profile-data">
-              <h1>mikhail{{ name/surname }}</h1>
+              <h1>mikhail</h1>
               <button>change image</button>
             <p>email{{ email }}</p>
           </div> 
@@ -20,10 +20,87 @@
        </ul>
       </div>
     </div>
-  <table class="table table-bordered">
+  <table   class="table table-bordered">
+    <!-- v-if="admin" -->
     <thead>
       <tr>
-      <th><button>add product</button></th>
+      <th></th>
+        <th><button
+      type="button"
+      class="btn"
+      data-bs-toggle="modal"
+      data-bs-target="#exampleModal"
+    >
+      Add Products
+    </button></th>
+    <!-- Modal -->
+  <div
+    class="modal fade"
+    id="exampleModal"
+    tabindex="-1"
+    aria-labelledby="exampleModalLabe2"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Add Products</h5>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="modal-body">
+          <div>
+            <label for="name">Title: </label>
+            <input type="name" maxlength="20" required id="add-title" v-model="title" />
+          </div>
+          <div>
+            <label for="price">Genre: </label>
+            <input type="name" required id="add-Genre"  v-model="genre" />
+          </div>
+           <div>
+            <label for="img">url: </label>
+            <input type="name" required id="add-Price" v-model="img" />
+          </div>
+          <div>
+            <div>
+               <label for="name">Description: </label>
+            <input type="text" required id="add-Description" v-model="description" />
+            </div>
+           <div> 
+               <label for="name">Price: </label>
+            <input type="number" required id="add-Price" v-model="price" />
+
+           </div>
+            <div> 
+               <label for="name">Quantity: </label>
+            <input type="number" required id="add-Quantity"  v-model="quantity" />
+
+           </div>
+        
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" id="closeBtn" data-bs-dismiss="modal">
+            Close
+          </button>
+          <button
+            type="button"
+            id="addWig-Btn"
+            data-bs-dismiss="modal"
+            @click="Add"
+          >
+            <i class="bi bi-plus-circle"></i>
+            Add Product
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
 </tr>
     </thead>
     <tbody>
@@ -38,8 +115,82 @@
         <td><img :src="product.img" alt=""></td>
         <td>{{product.price}}</td>
         <td>{{product.quantity}}</td>
-        <td><button>edit</button></td>
-        <td><button>delete</button></td>
+        <td><button
+      type="button"
+      class="btn"
+      data-bs-toggle="modal"
+      :data-bs-target="'#edit' + product.productid"
+    >
+    Edit Products
+    </button>  
+     <!-- Modal -->
+  <div
+    class="modal fade"
+    :id="'edit'+product.productid"
+    tabindex="-1"
+    aria-labelledby="exampleModalLabe2"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Edit Products</h5>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="modal-body">
+          <div>
+            <label for="name">Title: </label>
+            <input type="name" maxlength="20" required id="add-title" v-model="product.title"/>
+          </div>
+          <div>
+            <label for="price">Genre: </label>
+            <input type="name" required id="add-Genre" v-model="product.genre" />
+          </div>
+           <div>
+            <label for="img">url: </label>
+            <input type="name" required id="add-Price" v-model="product.img" />
+          </div>
+          <div>
+            <div>
+               <label for="name">Description: </label>
+            <input type="text" required id="add-Description" v-model="product.description" />
+            </div>
+           <div> 
+               <label for="name">Price: </label>
+            <input type="number" required id="add-Price" v-model="product.price" />
+
+           </div>
+            <div> 
+               <label for="name">Quantity: </label>
+            <input type="number" required id="add-Quantity" v-model="product.quantity" />
+
+           </div>
+        
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" id="closeBtn" data-bs-dismiss="modal">
+            Close
+          </button>
+          <button
+            type="button"
+            id="addWig-Btn"
+            data-bs-dismiss="modal"
+            @click="$store.dispatch('EditProduct')"
+          >
+            <i class="bi bi-plus-circle"></i>
+            Edit Product
+          </button>
+        </div>
+      </div>
+    </div>
+  </div></td>
+        <td><button id="delete" @click="$store.dispatch('deleteuser',product.productid)">delete</button></td>
         </tr>
       </div>
       <div v-else>No data</div>
@@ -53,13 +204,38 @@ export default {
     components: {
         bag
     },
+    data() {
+    return {
+      img: "https://i.postimg.cc/sx3W1SbS/logo2.png",
+      quantity: 1,
+      price: "",
+      description: "",
+      title: "",
+      genre:"",
+    }},
   mounted() {
     this.$store.dispatch("getProducts");
   },
+ methods: {
+    Add() {
+      return this.$store.dispatch("addProduct", {
+        title: this.title, // this returns as a empty string
+        img: this.img,
+        quantity: this.quantity,
+        price: this.price, // this returns as a empty string
+        genre: this.genre, // this returns as a empty string
+        description:this.description // this returns as a empty string
+      });
+    },
+  },
+
   computed: {
     products() {
       return this.$store.state.products;
     },
+    user(){
+      return this.$store.state.users;
+    }
   },
 };
 </script>
